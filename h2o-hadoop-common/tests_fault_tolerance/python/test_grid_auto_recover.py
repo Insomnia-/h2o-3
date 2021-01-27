@@ -8,6 +8,7 @@ import fault_tolerance_utils as utils
 import h2o
 from h2o.grid.grid_search import H2OGridSearch
 from h2o.estimators.gbm import H2OGradientBoostingEstimator
+from h2o.exceptions import H2OResponseError
 import unittest
 import threading
 
@@ -34,6 +35,8 @@ class GridAutoRecoveryTest(unittest.TestCase):
                 grid_in_progress = h2o.get_grid(grid_id)
             except IndexError:
                 print("no models trained yet")
+            except H2OResponseError as e:
+                print("grid not started yet " + e.args[0])
         print("done sleeping")
         return grid_in_progress.model_ids
 

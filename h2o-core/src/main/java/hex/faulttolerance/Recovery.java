@@ -34,7 +34,7 @@ public class Recovery<T extends Keyed> {
             LOG.debug("Auto recovery dir not configured.");
         } else {
             LOG.info("Initializing auto recovery from " + autoRecoveryDir);
-            H2O.submitTask(new H2O.H2OCountedCompleter(H2O.MAX_PRIORITY) {
+            H2O.submitTask(new H2O.H2OCountedCompleter(H2O.MIN_PRIORITY) {
                 @Override
                 public void compute2() {
                     new Recovery(autoRecoveryDir).autoRecover();

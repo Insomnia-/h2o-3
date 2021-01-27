@@ -179,6 +179,7 @@ public class Recovery<T extends Keyed> {
     public void autoRecover() {
         URI recoveryMetaUri = FileUtils.getURI(recoveryMetaFile());
         if (!PersistUtils.exists(recoveryMetaUri)) {
+            LOG.info("No auto-recovery information found.");
             return;
         }
         Map<String, String> recoveryInfo = PersistUtils.readStream(
@@ -189,6 +190,7 @@ public class Recovery<T extends Keyed> {
         Key<Job> jobKey = Key.make(recoveryInfo.get(INFO_JOB_KEY));
         Key<?> resultKey = Key.make(recoveryInfo.get(INFO_RESULT_KEY));
         if (Grid.class.getName().equals(className)) {
+            LOG.info("Auto-recovering previously interrupted grid search.");
             Grid grid = Grid.importBinary(recoveryFile(resultKey), true);
             GridSearch.resumeGridSearch(
                 jobKey, grid,

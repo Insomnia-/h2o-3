@@ -48,7 +48,7 @@ class GridAutoRecoveryTest(unittest.TestCase):
     def _check_training_error(self):
         assert self.training_error is None
 
-    def test_frame_auto_recovery(self):
+    def test_auto_recovery(self):
         name_node = pyunit_utils.hadoop_namenode()
         dataset = "/datasets/iris_wheader.csv"
 

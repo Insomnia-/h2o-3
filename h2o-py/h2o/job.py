@@ -12,7 +12,7 @@ import warnings
 import time
 
 import h2o
-from h2o.exceptions import H2OJobCancelled, H2OConnectionError, H2OResponseError
+from h2o.exceptions import H2OJobCancelled, H2OConnectionError, H2OResponseError, H2OServerError
 from h2o.utils.progressbar import ProgressBar
 from h2o.utils.shared_utils import clamp
 
@@ -36,6 +36,7 @@ class H2OJob(object):
         self.job_key = job["key"]["name"]
         self.dest_key = job["dest"]["name"]
         self.auto_recoverable = job["auto_recoverable"]
+        self.job_poll_success = False
         self.warnings = None
         self.progress = 0
         self.exception = job["exception"] if "exception" in job else None
@@ -102,10 +103,11 @@ class H2OJob(object):
             try:
                 attempts += 1
                 result = h2o.api("GET /3/Jobs/%s" % self.job_key)
+                self.job_poll_success = True  # only retry if there was at least one OK response
                 break
-            except (H2OConnectionError, H2OResponseError) as e:
+            except (H2OConnectionError, H2OResponseError, H2OServerError) as e:
                 last_err = e
-                if self.auto_recoverable:
+                if self.job_poll_success and self.auto_recoverable:
                     print("Job request failed %s, waiting for cluster to restart." % e.args[0])
                     time.sleep(10)
                 else:

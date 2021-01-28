@@ -109,7 +109,7 @@ class GridAutoRecoveryTest(unittest.TestCase):
             self._check_training_error()
             h2o.connection().close()
         finally:
-            utils.stop_cluster(cluster_3)
+            utils.stop_cluster(cluster_3_name)
 
 
 if __name__ == '__main__':

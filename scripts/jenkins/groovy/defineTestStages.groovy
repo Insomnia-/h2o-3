@@ -30,30 +30,134 @@ def call(final pipelineContext) {
   // Job will execute PR_STAGES only if these are green.
   // for Python, smoke only oldest and latest supported versions
   def SMOKE_STAGES = [
-    [
-      stageName: 'Py2.7 Smoke', target: 'test-py-smoke', pythonVersion: '2.7',timeoutValue: 8,
-      component: pipelineContext.getBuildConfig().COMPONENT_PY
-    ],
-    [
-      stageName: 'Py3.7 Smoke', target: 'test-py-smoke', pythonVersion: '3.7',timeoutValue: 8,
-      component: pipelineContext.getBuildConfig().COMPONENT_PY
-    ],
-    [
-      stageName: 'R3.5 Smoke', target: 'test-r-smoke', rVersion: '3.5.3',timeoutValue: 8,
-      component: pipelineContext.getBuildConfig().COMPONENT_R
-    ],
-    [
-      stageName: 'R4.0 Smoke', target: 'test-r-smoke', rVersion: '4.0.2',timeoutValue: 8,
-      component: pipelineContext.getBuildConfig().COMPONENT_R
-    ],
-    [
-      stageName: 'Flow Headless Smoke', target: 'test-flow-headless-smoke',timeoutValue: 20,
-      component: pipelineContext.getBuildConfig().COMPONENT_JS
-    ],
-    [
-      stageName: 'Java 8 Smoke', target: 'test-junit-smoke-jenkins', javaVersion: 8, timeoutValue: 20,
-      component: pipelineContext.getBuildConfig().COMPONENT_JAVA
-    ]
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ],
+          [
+                  stageName: 'Java 13 JUnit', target: 'test-junit-13-jenkins', pythonVersion: '2.7', javaVersion: 13,
+                  timeoutValue: 180, component: pipelineContext.getBuildConfig().COMPONENT_JAVA, additionalTestPackages: [pipelineContext.getBuildConfig().COMPONENT_PY]
+          ]
   ]
 
   // Stages executed after each push to PR branch.

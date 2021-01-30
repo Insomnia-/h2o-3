@@ -1482,14 +1482,17 @@ public class NewChunk extends Chunk {
   }
   // Compute a compressed integer buffer
   private byte[] bufX( long bias, int scale, int off, int log ) {
+    assert log >= 0 && log <= 3;
+    assert off >= 0;
     byte[] bs = MemoryManager.malloc1((_len <<log)+off);
-    if (USE_SAFE_BUFX && log > 0) {
+    if (log > 0) {
       return bufX_safe(bs, bias, scale, off, log);
     }
+    assert bs.length == off + _len;
     int j = 0;
-    for( int i=0; i< _len; i++ ) {
+    for (int i = off; i < bs.length; i++) {
       long le = -bias;
-      if(_id == null || _id.length == 0 || (j < _id.length && _id[j] == i)){
+      if(_id == null || _id.length == 0 || (j < _id.length && _id[j] == i-off)){
         if( isNA2(j) ) {
           le = NAS[log];
         } else {
@@ -1500,13 +1503,7 @@ public class NewChunk extends Chunk {
         }
         ++j;
       }
-      switch( log ) {
-      case 0:          bs [i    +off] = (byte)le ; break;
-      case 1: UnsafeUtils.set2(bs,(i<<1)+off,  (short)le); break;
-      case 2: UnsafeUtils.set4(bs, (i << 2) + off, (int) le); break;
-      case 3: UnsafeUtils.set8(bs, (i << 3) + off, le); break;
-      default: throw H2O.fail();
-      }
+      bs[i] = (byte) le;
     }
     assert j == _sparseLen :"j = " + j + ", _sparseLen = " + _sparseLen;
     return bs;
